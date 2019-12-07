@@ -2,27 +2,44 @@
   <div class="container">
     <h2>Making API calls the Vue Way</h2>
     <hr>
-    <h5 v-for="post in posts" :key="post.id">{{post.title}}</h5>
+    <div class="container row">
+      <Card v-for="post in posts" :key="post.id" :post="post" class="mx-auto">{{post.title}}</Card>
+    </div>
+
   </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import Card from "@/components/Card";
 
   export default {
     data() {
       return {
-        posts: ''
+        post: ''
       }
     },
-    asyncData() {
-      return axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => {
-          return {posts: response.data}
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+    async asyncData() {
+
+      let {data} =  await axios.get('https://jsonplaceholder.typicode.com/posts');
+      return {posts:data}
+
+      //
+      // return axios.get('https://jsonplaceholder.typicode.com/posts')
+      //   .then((response) => {
+      //     return {posts: response.data}
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   })
+    },
+    head() {
+      return {
+        title : 'List Of posts'
+      }
+    },
+    components:{
+      Card
     }
   }
 </script>
