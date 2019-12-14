@@ -9,11 +9,12 @@
 
 <script>
   import axios from 'axios'
+  import {mapGetters} from 'vuex';
 
   export default {
     data() {
       return {
-        post: ''
+        post:''
       }
     },
     async asyncData({params}) {
@@ -25,6 +26,12 @@
       return {
         title : this.post.title
       }
+    },
+    computed:{
+      // post(){
+      //   let post_id = this.$route.params.id;
+      //   return this.$store.getters.getPostByid(post_id);
+      // }
     },
     validate({params}){
       return /^\d+$/.test(params.id);

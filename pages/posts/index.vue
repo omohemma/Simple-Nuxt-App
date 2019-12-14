@@ -12,6 +12,7 @@
 <script>
   import axios from 'axios'
   import Card from "@/components/Card";
+  import {mapGetters} from 'vuex';
 
   export default {
     data() {
@@ -19,10 +20,11 @@
         post: ''
       }
     },
-    async asyncData() {
+    async asyncData({store}) {
 
       let {data} =  await axios.get('https://jsonplaceholder.typicode.com/posts');
-      return {posts:data}
+      //return {posts:data}
+      store.dispatch('setPosts',data);
 
       //
       // return axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -37,6 +39,12 @@
       return {
         title : 'List Of posts'
       }
+    },
+    computed:{
+      ...mapGetters(['posts'])
+      // allPosts() {
+      //   return this.$store.getters.posts;
+      // }
     },
     components:{
       Card

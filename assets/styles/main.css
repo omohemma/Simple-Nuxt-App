@@ -1,6 +1,6 @@
 
 .jumbotron{
-    background-image: url('https://cdn.pixabay.com/photo/2019/12/01/09/40/landscape-4665055_960_720.jpg');
+    background-image: url('/mountains.jpg');
     height: 350px;
     background-size: cover;
     background-repeat: no-repeat;
