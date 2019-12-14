@@ -12,7 +12,7 @@
 <script>
   import axios from 'axios'
   import Card from "@/components/Card";
-  import {mapGetters} from 'vuex';
+  import {mapGetters} from 'vuex'
 
   export default {
     data() {
